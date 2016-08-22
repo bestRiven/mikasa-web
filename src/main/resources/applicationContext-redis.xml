@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<context:property-placeholder location="classpath:redis.properties"
+		ignore-unresolvable="true" order="1"  />
+		
+	<!-- jedis -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${jredis.pool.maxTotal}"/>
+        <property name="maxWaitMillis" value="${jredis.pool.maxWaitMillis}"/>
+        <property name="maxIdle" value="${jredis.pool.maxIdle}"/>
+        <property name="testOnBorrow" value="${jredis.pool.testOnBorrow}"/>
+        <property name="testWhileIdle" value="${jredis.pool.testOnReturn}"/>
+    </bean>
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg index="0" ref="jedisPoolConfig"/>
+        <constructor-arg index="1" value="${jredis.master.ip}"/>
+        <constructor-arg index="2" value="${jredis.master.port}"/>
+        <constructor-arg index="3" value="${jredis.master.timeout}"/>
+        <constructor-arg index="4" value="${jredis.master.password}"/>
+    </bean>
+	<bean id="jedisTemplate" class="com.mikasa.demo.redis.JedisTemplate">
+        <constructor-arg index="0" ref="jedisPool"/>
+    </bean>
+
+</beans>
