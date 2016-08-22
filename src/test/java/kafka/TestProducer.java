@@ -1,7 +1,8 @@
 package kafka;
 
-import com.zy.kafka.KafkaMessage;
-import com.zy.kafka.Producer;
+
+import com.mikasa.demo.kafka.KafkaMessage;
+import com.mikasa.demo.kafka.Producer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

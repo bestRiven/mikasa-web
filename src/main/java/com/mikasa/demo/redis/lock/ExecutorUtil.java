@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 
 
 /**
- * @author zhangzhen
+ * @author zhangyu
  *
  */
 public class ExecutorUtil {

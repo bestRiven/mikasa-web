@@ -12,7 +12,7 @@
                         http://www.springframework.org/schema/task
                         http://www.springframework.org/schema/task/spring-task.xsd">
 
-	<bean id="kafkaConsumer" class="com.zy.kafka.KafkaConsumer"></bean>
+	<bean id="kafkaConsumer" class="com.mikasa.demo.kafka.KafkaConsumer"></bean>
 
 	<int:channel id="inputFromKafka">
 		<int:queue/>
