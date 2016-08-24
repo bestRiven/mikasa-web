@@ -1,4 +1,4 @@
-package com.mikasa.demo.redis;
+package com.mikasa.core.redis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPoolConfig;

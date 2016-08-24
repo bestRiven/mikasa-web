@@ -1,4 +1,4 @@
-package com.mikasa.demo.redis.lock;
+package com.mikasa.core.redis.lock;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;

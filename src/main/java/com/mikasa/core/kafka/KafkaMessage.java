@@ -1,4 +1,4 @@
-package com.mikasa.demo.kafka;
+package com.mikasa.core.kafka;
 
 import java.io.Serializable;
 

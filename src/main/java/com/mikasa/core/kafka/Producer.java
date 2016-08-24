@@ -1,4 +1,4 @@
-package com.mikasa.demo.kafka;
+package com.mikasa.core.kafka;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.integration.kafka.support.KafkaHeaders;

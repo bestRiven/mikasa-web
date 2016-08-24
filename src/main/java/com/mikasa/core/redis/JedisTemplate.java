@@ -1,4 +1,4 @@
-package com.mikasa.demo.redis;
+package com.mikasa.core.redis;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mikasa.demo</groupId>
-    <artifactId>mikasa-web-demo</artifactId>
+    <artifactId>mikasa-web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>mikasa-web-demo Maven Webapp</name>
+    <name>mikasa-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -372,7 +372,7 @@
     </dependencies>
 
     <build>
-        <finalName>mikasa-web-demo</finalName>
+        <finalName>mikasa-web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

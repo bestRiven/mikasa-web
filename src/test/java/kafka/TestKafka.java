@@ -1,17 +1,14 @@
 package kafka;
 
 
-import com.mikasa.demo.kafka.KafkaConsumer;
-import com.mikasa.demo.kafka.KafkaMessage;
-import com.mikasa.demo.kafka.KafkaProducer;
+import com.mikasa.core.kafka.KafkaConsumer;
+import com.mikasa.core.kafka.KafkaMessage;
+import com.mikasa.core.kafka.KafkaProducer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by root2 on 16/8/10.

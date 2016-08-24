@@ -28,7 +28,7 @@
         <constructor-arg index="3" value="${jredis.master.timeout}"/>
         <constructor-arg index="4" value="${jredis.master.password}"/>
     </bean>
-	<bean id="jedisTemplate" class="com.mikasa.demo.redis.JedisTemplate">
+	<bean id="jedisTemplate" class="com.mikasa.core.redis.JedisTemplate">
         <constructor-arg index="0" ref="jedisPool"/>
     </bean>
 

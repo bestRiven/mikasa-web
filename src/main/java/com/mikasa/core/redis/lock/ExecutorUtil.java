@@ -1,4 +1,4 @@
-package com.mikasa.demo.redis.lock;
+package com.mikasa.core.redis.lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

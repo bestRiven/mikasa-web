@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-	<bean id="kafkaProducer" class="com.mikasa.demo.kafka.KafkaProducer"></bean>
+	<bean id="kafkaProducer" class="com.mikasa.core.kafka.KafkaProducer"></bean>
 	<int:channel id="inputToKafka">
 		<int:queue/>
 	</int:channel>

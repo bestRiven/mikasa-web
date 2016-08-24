@@ -1,18 +1,13 @@
 package kafka;
 
 
-import com.mikasa.demo.kafka.KafkaMessage;
-import com.mikasa.demo.kafka.Producer;
+import com.mikasa.core.kafka.KafkaMessage;
+import com.mikasa.core.kafka.Producer;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.integration.kafka.support.KafkaHeaders;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Created by root2 on 16/8/11.

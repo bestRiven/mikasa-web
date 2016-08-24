@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="mikasa-web-demo:war exploded">
-    <output-path>$PROJECT_DIR$/target/mikasa-web-demo</output-path>
+    <output-path>$PROJECT_DIR$/target/mikasa-web</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="mikasa-web-demo" />
+          <element id="module-output" name="mikasa-web" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.jfinal:jfinal:1.9" />
@@ -114,9 +114,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/mikasa-web-demo/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/mikasa-web/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="mikasa-web-demo/web/Web" />
+      <element id="javaee-facet-resources" facet="mikasa-web/web/Web" />
     </root>
   </artifact>
 </component>

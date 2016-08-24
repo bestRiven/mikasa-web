@@ -1,7 +1,7 @@
-package com.mikasa.demo.redis;
+package com.mikasa.core.redis;
 
 
-import com.mikasa.demo.redis.lock.ExecutorUtil;
+import com.mikasa.core.redis.lock.ExecutorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
