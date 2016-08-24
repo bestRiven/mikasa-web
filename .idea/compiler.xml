@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="mikasa-web" />
         <module name="mikasa-web-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="mikasa-web" target="1.6" />
       <module name="mikasa-web-demo" target="1.6" />
     </bytecodeTargetLevel>
   </component>
