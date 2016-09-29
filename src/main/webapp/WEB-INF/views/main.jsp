@@ -6,7 +6,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>每日优鲜</title>
+		<title>Mikasa</title>
 		<!-- basic styles -->
 		<link href="${ctx}/static/assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="${ctx}/static/assets/css/font-awesome.min.css" />
@@ -29,7 +29,7 @@
 					<div class="page-content">
 						<div class="page-header">
 							<h1>
-								每日优鲜 商城管理平台
+								Mikasa 商城管理平台
 								<small>
 									<i class="icon-double-angle-right"></i>
 									welcome.

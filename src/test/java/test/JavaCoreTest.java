@@ -10,6 +10,8 @@ public class JavaCoreTest {
     @Test
     public void test(){
         System.out.println(sum(5));
+        lock(5,5);
+        System.out.println("end");
     }
 
     /**
@@ -43,6 +45,18 @@ public class JavaCoreTest {
     }
     public static void move(int n, char a, char c) {
         System.out.println(n + ":" + a + "-->" + c);// 打印移动盘子情况
+    }
+
+    public void lock(int a,int b){
+        if (a == b){
+            return;
+        }
+        if(b > 0){
+            System.out.println("success");
+        }else {
+            lock(++a,b);
+            System.out.println("fail");
+        }
     }
 
 }

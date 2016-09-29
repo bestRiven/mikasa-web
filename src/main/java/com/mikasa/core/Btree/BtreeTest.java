@@ -26,9 +26,9 @@ public class BtreeTest {
         r2.right = r5;
         r3.right = r6;
 
-//      System.out.println(getNodeNumRec(r1));
+        System.out.println(BinaryTreeUtil.getNodeNumRec(r1));
 //      System.out.println(getNodeNum(r1));
-//      System.out.println(getDepthRec(r1));
+        System.out.println(BinaryTreeUtil.getDepthRec(r1));
 //      System.out.println(getDepth(r1));
 
 //      preorderTraversalRec(r1);

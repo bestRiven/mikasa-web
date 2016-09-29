@@ -1,7 +1,6 @@
 package com.mikasa.core.redis;
 
 
-import com.mikasa.core.redis.lock.ExecutorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,10 +73,14 @@ public class SeckillTemplate {
                         /**
                          * 每隔0.5秒尝试一次获得锁，总共60次，也就是30秒仍旧未获得锁，则直接return
                          */
-                        lock(lockPrefix+userId,60,0,60,500);
-                        jedisTemplate.lpush(prefix,userId);
-                        jedisTemplate.set("check"+userId,userId+timestamp);
-                        map.put("result","秒杀成功:"+jedisTemplate.lrangeAll(prefix));
+                        if(lock(lockPrefix+userId,60,0,60,500)){
+                            jedisTemplate.lpush(prefix,userId);
+                            jedisTemplate.set("check"+userId,userId+timestamp);
+                            map.put("result","秒杀成功:"+jedisTemplate.lrangeAll(prefix));
+                        }else {
+                            map.put("result","秒杀失败:"+userId);
+                        }
+
                     }finally {
                         unLock(lockPrefix+userId);
                     }
@@ -96,23 +99,26 @@ public class SeckillTemplate {
      * @param retryFrequency 重试时间
      * @param intervalPeriodMillisecond 重试间隔
      */
-    public void lock(String lockName,int seconds,int currentRetryFrequency,
+    public boolean lock(String lockName,int seconds,int currentRetryFrequency,
                         int retryFrequency, int intervalPeriodMillisecond){
+        boolean result = false;
         if (currentRetryFrequency == retryFrequency) {
-            return;
+            return result;
         }
         try {
             if (tryLock(lockName,seconds)) {
                 log.info("获取分布式锁成功![{}]",lockName);
+                result = true;
             } else {
                 log.info("等待重新获取锁[{}]",lockName);
-                ExecutorUtil.sleep(intervalPeriodMillisecond);
+                TimeUnit.MILLISECONDS.sleep(intervalPeriodMillisecond);
                 lock(lockName,seconds,++currentRetryFrequency, retryFrequency, intervalPeriodMillisecond);
             }
         } catch (Exception e) {
             log.error("lock异常",e);
             lock(lockName,seconds,0, 0, 0);
         }
+        return result;
     }
 
     private boolean tryLock(final String lockName,final int seconds){

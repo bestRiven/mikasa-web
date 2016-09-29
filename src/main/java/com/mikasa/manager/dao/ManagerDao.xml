@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mikasa.manager.dao.ManagerDao">
+	<select id="queryStore" resultType="java.util.Map">
+		select
+		id,plat_flg,is_fast_arrive,created_at,updated_at,app_poi_code,wma_store_code,tms_store_code
+		from meituan_inventory_appstore where 1=1
+		<if test="plat_flg!='' and plat_flg!=null">
+			and plat_flg=#{plat_flg}
+		</if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+			and app_poi_code=#{app_poi_code}
+		</if>
+		<if test="wma_store_code!='' and wma_store_code!=null">
+			and wma_store_code=#{wma_store_code}
+		</if>
+		<if test="tms_store_code!='' and tms_store_code!=null">
+			and tms_store_code=#{tms_store_code}
+		</if>
+		order by id desc limit #{lmtstart},#{lmtend}
+	</select>
+	<select id="queryStoreCount" resultType="int">
+		select
+		count(1)
+		from meituan_inventory_appstore where 1=1
+		<if test="plat_flg!='' and plat_flg!=null">
+			and plat_flg=#{plat_flg}
+		</if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+			and app_poi_code=#{app_poi_code}
+		</if>
+		<if test="wma_store_code!='' and wma_store_code!=null">
+			and wma_store_code=#{wma_store_code}
+		</if>
+		<if test="tms_store_code!='' and tms_store_code!=null">
+			and tms_store_code=#{tms_store_code}
+		</if>
+	</select>
+	<insert id="insertStore" parameterType="java.util.Map">
+		insert into
+		meituan_inventory_appstore(
+		plat_flg,created_at,updated_at,app_poi_code,wma_store_code,tms_store_code
+		)
+		values
+		(
+		#{plat_flg},now(),now(),#{app_poi_code},#{wma_store_code},#{tms_store_code}
+		)
+	</insert>
+	<delete id="deleteStore" parameterType="java.util.Map">
+		delete from
+		meituan_inventory_appstore where id=#{id}
+	</delete>
+	<update id="updateStore" parameterType="java.util.Map">
+		update meituan_inventory_appstore
+		set updated_at=#{updated_at}
+		<if test="plat_flg!='' and plat_flg!=null">
+			,plat_flg=#{plat_flg}
+		</if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+			,app_poi_code=#{app_poi_code}
+		</if>
+		<if test="wma_store_code!='' and wma_store_code!=null">
+			,wma_store_code=#{wma_store_code}
+		</if>
+		<if test="tms_store_code!='' and tms_store_code!=null">
+			,tms_store_code=#{tms_store_code}
+		</if>
+		where id=#{id}
+	</update>
+
+	<select id="queryStoreSku" resultType="java.util.Map">
+		select id,plat_flg,app_poi_code,sku_code,spu_code
+		from
+		meituan_store_sku where 1=1
+		<if test="plat_flg!='' and plat_flg!=null">
+			and plat_flg=#{plat_flg}
+		</if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+			and app_poi_code=#{app_poi_code}
+		</if>
+		<if test="sku_code!='' and sku_code!=null">
+			and sku_code=#{sku_code}
+		</if>
+		order by id desc limit #{lmtstart},#{lmtend}
+	</select>
+	<select id="queryStoreSkuCount" resultType="int">
+		select count(1)
+		from meituan_store_sku where 1=1
+		<if test="plat_flg!='' and plat_flg!=null">
+			and plat_flg=#{plat_flg}
+		</if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+			and app_poi_code=#{app_poi_code}
+		</if>
+		<if test="sku_code!='' and sku_code!=null">
+			and sku_code=#{sku_code}
+		</if>
+	</select>
+	<insert id="insertStoreSku" parameterType="java.util.Map">
+		insert into
+		meituan_store_sku(plat_flg,app_poi_code,sku_code,spu_code)
+		values
+		(
+		#{plat_flg},#{app_poi_code},#{sku_code},#{sku_code}
+		)
+	</insert>
+	<delete id="deleteStoreSku" parameterType="java.util.Map">
+		delete from
+		meituan_store_sku where id=#{id}
+	</delete>
+	<update id="updateStoreSku" parameterType="java.util.Map">
+		update meituan_store_sku
+		set
+		<if test="plat_flg!='' and plat_flg!=null">
+			plat_flg=#{plat_flg}
+		</if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+			,app_poi_code=#{app_poi_code}
+		</if>
+		<if test="sku_code!='' and sku_code!=null">
+			,sku_code=#{sku_code},spu_code=#{sku_code}
+		</if>
+		where id=#{id}
+	</update>
+	<select id="queryLocaltionByOrderId" resultType="java.util.Map">
+		select latitude,longitude from meituan_orders where wm_order_id_view=#{wm_order_id_view}
+	</select>
+	<!-- 暂时没用 -->
+	<!-- <insert id="batchInsertStore" parameterType="java.util.List">
+	insert into meituan_inventory_appstore(plat_flg,created_at,updated_at,app_poi_code,wma_store_code,tms_store_code) values
+	<foreach collection="list" item="obj" index="index" separator=",">
+		(#{obj.plat_flg},now(),now(),#{obj.app_poi_code},#{obj.wma_store_code},#{obj.tms_store_code})
+	</foreach>
+	</insert>
+	<insert id="batchInsertStoreSku" parameterType="java.util.List">
+		insert into meituan_store_sku(plat_flg,app_poi_code,sku_code,spu_code) values
+		<foreach collection="list" item="obj" index="index" separator=",">
+			(#{obj.plat_flg},#{obj.app_poi_code},#{obj.sku_code},#{obj.sku_code})
+		</foreach>
+	</insert> -->
+	
+	<select id="queryOrdersGroup" parameterType="java.util.Map" resultType="java.util.HashMap" >
+		select 
+			app_poi_code ,wm_poi_name,
+			date_format(created_at,'%Y-%m-%d') datestr ,count(1) num 
+		from meituan_orders 
+		where  created_at is not null 
+		<if test="app_poi_code !='' and app_poi_code !=null">
+	      	and app_poi_code = #{app_poi_code}
+	    </if>
+	    <if test="wm_poi_name !='' and wm_poi_name !=null">
+	      	and wm_poi_name = #{wm_poi_name}
+	    </if>
+	    <if test="createdTimeStart !='' and createdTimeStart !=null">
+	      	and #{createdTimeStart} <![CDATA[<=]]> created_at
+	    </if>
+	    <if test="createdTimeEnd !='' and createdTimeEnd !=null">
+	      	and  created_at  <![CDATA[<=]]>  #{createdTimeEnd}
+	    </if>
+	    group by app_poi_code ,date_format(created_at,'%Y-%m-%d') 
+	    order by app_poi_code desc ,date_format(created_at,'%Y-%m-%d') desc 
+	    limit #{lmtstart},#{lmtend}
+	</select>
+	<select id="queryOrdersGroupCount" parameterType="java.util.Map" resultType="int" >
+		select count(1) from (
+			select 
+			app_poi_code ,wm_poi_name,
+			date_format(created_at,'%Y-%m-%d') datestr ,count(1) num 
+			from meituan_orders 
+			where  created_at is not null
+			<if test="app_poi_code !='' and app_poi_code !=null">
+		      	and app_poi_code = #{app_poi_code}
+		    </if>
+		    <if test="wm_poi_name !='' and wm_poi_name !=null">
+		      	and wm_poi_name = #{wm_poi_name}
+		    </if>
+		    <if test="createdTimeStart !='' and createdTimeStart !=null">
+	      		and #{createdTimeStart} <![CDATA[<=]]> created_at
+		    </if>
+		    <if test="createdTimeEnd !='' and createdTimeEnd !=null">
+		      	and  created_at  <![CDATA[<=]]>  #{createdTimeEnd}
+		    </if>
+			group by app_poi_code ,date_format(created_at,'%Y-%m-%d')
+		)a
+	</select>
+    <select id="queryOrders" parameterType="java.util.Map" resultType="java.util.HashMap" >
+		select date_format(created_at,'%Y-%m-%d') created_at,
+			order_id,wm_order_id_view,app_poi_code,wm_poi_name
+			,wm_poi_address,wm_poi_phone,recipient_address
+			,recipient_phone,recipient_name,shipping_fee,total,original_price
+			,caution,shipper_phone,status,has_invoiced,invoice_title
+			,ctime,utime,delivery_time,is_third_shipping,pay_type,latitude,longitude
+			,detail,extras from meituan_orders
+		where 1 = 1
+		<if test="wm_order_id_view!='' and wm_order_id_view!=null">
+	      	and wm_order_id_view = #{wm_order_id_view}
+	    </if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+	      	and app_poi_code = #{app_poi_code}
+	    </if>
+		<if test="recipient_name!='' and recipient_name!=null">
+	      	and recipient_name = #{recipient_name}
+	    </if>
+	    <if test="have_no_coordinate!='' and have_no_coordinate!=null">
+	      	and (latitude is null or latitude='')
+	    </if>
+	    order by id desc limit #{lmtstart},#{lmtend}
+	</select>
+	<select id="queryOrdersCount" parameterType="java.util.Map" resultType="int" >
+		select 
+			count(id) from meituan_orders
+		where 1 = 1
+		<if test="wm_order_id_view!='' and wm_order_id_view!=null">
+	      	and wm_order_id_view = #{wm_order_id_view}
+	    </if>
+		<if test="app_poi_code!='' and app_poi_code!=null">
+	      	and app_poi_code = #{app_poi_code}
+	    </if>
+		<if test="recipient_name!='' and recipient_name!=null">
+	      	and recipient_name = #{recipient_name}
+	    </if>
+	    <if test="have_no_coordinate!='' and have_no_coordinate!=null">
+	      	and (latitude is null or latitude='')
+	    </if>
+	</select>
+</mapper>
