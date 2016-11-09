@@ -1,0 +1,14 @@
+package com.mikasa.core.zookeeper;
+
+/**
+ * Created by sherlock on 2016/11/1.
+ */
+public class Constant {
+
+    public static final String ZK_CONNECTION_STRING = "localhost:2181,localhost:2182,localhost:2183";
+    public static final int ZK_SESSION_TIMEOUT = 50000;
+    public static final String ZK_REGISTRY_PATH = "/registry";
+    public static final String ZK_PROVIDER_PATH = ZK_REGISTRY_PATH + "/provider";
+    public static final String ZK_LOCK_PATH = "/lock";
+    public static final String ZK_SUBLOCK_PATH = ZK_LOCK_PATH + "/sub_lock";
+}
