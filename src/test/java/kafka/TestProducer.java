@@ -1,3 +1,4 @@
+/*
 package kafka;
 
 
@@ -9,17 +10,23 @@ import org.springframework.integration.kafka.support.KafkaHeaders;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
 
+*/
 /**
  * Created by root2 on 16/8/11.
- */
+ *//*
 
+
+*/
 /*@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:spring-producer.xml"})*/
+@ContextConfiguration(locations = { "classpath*:spring-producer.xml"})*//*
+
 public class TestProducer {
 
-    /*@Autowired
+    */
+/*@Autowired
     @Qualifier("inputToKafka")
-    private MessageChannel channel;*/
+    private MessageChannel channel;*//*
+
     private static final String CONFIG = "/spring-producer.xml";
 
     @Test
@@ -33,3 +40,4 @@ public class TestProducer {
         channel.send(MessageBuilder.withPayload(kafkaMessage).setHeader("messageKey", "testKafka").setHeader(KafkaHeaders.TOPIC, "test").build());
     }
 }
+*/
