@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mikasa.manager.dao.ManagerDao">
+<mapper namespace="com.mikasa.dao.ManagerDao">
 	<select id="queryStore" resultType="java.util.Map">
 		select
 		id,plat_flg,is_fast_arrive,created_at,updated_at,app_poi_code,wma_store_code,tms_store_code

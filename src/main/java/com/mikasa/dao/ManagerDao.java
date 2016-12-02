@@ -1,4 +1,4 @@
-package com.mikasa.manager.dao;
+package com.mikasa.dao;
 
 import java.util.List;
 import java.util.Map;
