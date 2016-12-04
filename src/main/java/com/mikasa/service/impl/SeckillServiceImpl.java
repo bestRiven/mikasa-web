@@ -83,7 +83,7 @@ public class SeckillServiceImpl implements SeckillService {
         }
         //转换特定字符串的过程，不可逆
         String md5 = getMD5(seckillId);
-        return new Exposer(true, md5, seckillId);
+        return new Exposer(true,seckillId,md5);
     }
 
 
@@ -156,7 +156,7 @@ public class SeckillServiceImpl implements SeckillService {
                 SuccessKill successKilled = successKillDao.queryByIdWithSeckill(seckillId, userPhone);
                 return new SeckillExecution(seckillId, SeckillStatEnum.SUCCESS, successKilled);
             } else {
-                return new SeckillExecution(seckillId, SeckillStatEnum.stateOf(result));
+                return new SeckillExecution(seckillId, SeckillStatEnum.FAILED);//SeckillStatEnum.stateOf(result)
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);

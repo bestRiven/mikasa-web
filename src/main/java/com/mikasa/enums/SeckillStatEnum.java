@@ -10,11 +10,11 @@ public class SeckillStatEnum extends EnumType{
 
     public static final Map<Integer, SeckillStatEnum> mapping = new HashMap<Integer, SeckillStatEnum>();
 
-    public static final SeckillStatEnum SUCCESS = new SeckillStatEnum(1, "已创建");
-    public static final SeckillStatEnum INNER_ERROR = new SeckillStatEnum(2, "已审核");
-    public static final SeckillStatEnum REPEAT_KILL = new SeckillStatEnum(3, "已完成");
-    public static final SeckillStatEnum END = new SeckillStatEnum(6, "已接单");
-    public static final SeckillStatEnum CANCELED = new SeckillStatEnum(4, "已取消");
+    public static final SeckillStatEnum SUCCESS = new SeckillStatEnum(1, "秒杀成功");
+    public static final SeckillStatEnum INNER_ERROR = new SeckillStatEnum(2, "内部错误");
+    public static final SeckillStatEnum REPEAT_KILL = new SeckillStatEnum(3, "重复秒杀");
+    public static final SeckillStatEnum END = new SeckillStatEnum(6, "秒杀结束");
+    public static final SeckillStatEnum FAILED = new SeckillStatEnum(4, "已取消");
     public static final SeckillStatEnum DELETED = new SeckillStatEnum(-1, "已删除");
     public SeckillStatEnum(){}
     SeckillStatEnum(int type, String name) {

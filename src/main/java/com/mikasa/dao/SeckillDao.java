@@ -18,5 +18,6 @@ public interface SeckillDao {
     Seckill queryById(long seckilled);
 
     List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
-    public void seckillByProcedure(Map<String, Object> paramMap);
+
+    void seckillByProcedure(Map<String, Object> paramMap);
 }
