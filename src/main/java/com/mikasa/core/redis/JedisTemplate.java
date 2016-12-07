@@ -432,6 +432,33 @@ public class JedisTemplate {
 		});
 	}
 
+	public String rpoplpush(final String popkey, final String pushkey) {
+		return execute(new JedisAction<String>() {
+			@Override
+			public String action(Jedis jedis) {
+				return jedis.rpoplpush(popkey,pushkey);
+			}
+		});
+	}
+
+	public List<String> brpop(final String key){
+		return execute(new JedisAction<List<String>>() {
+			@Override
+			public List<String> action(Jedis jedis) {
+				return jedis.brpop(key);
+			}
+		});
+	}
+
+	public List<String> blpop(final String key){
+		return execute(new JedisAction<List<String>>() {
+			@Override
+			public List<String> action(Jedis jedis) {
+				return jedis.blpop(key);
+			}
+		});
+	}
+
 	/**
 	 * 获取list中的所有的值
 	 */
