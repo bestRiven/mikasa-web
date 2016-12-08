@@ -674,6 +674,12 @@ public class JedisTemplate {
 		});
 	}
 
+	/**
+	 * 发布消息
+	 * @param channel
+	 * @param message
+	 * @return
+	 */
 	public Long publish(final String channel, final String message) {
 		return execute(new JedisAction<Long>() {
 			@Override
@@ -683,6 +689,11 @@ public class JedisTemplate {
 		});
 	}
 
+	/**
+	 * 订阅消息
+	 * @param jedisPubSub
+	 * @param channels
+	 */
 	public void subscribe(final JedisPubSub jedisPubSub, final String... channels) {
 		execute(new JedisActionNoResult() {
 			@Override

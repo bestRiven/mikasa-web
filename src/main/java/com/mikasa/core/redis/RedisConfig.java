@@ -122,7 +122,6 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean
     Receiver receiver(CountDownLatch latch) {
-
         return new Receiver(latch);
     }
 
